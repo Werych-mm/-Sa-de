@@ -36,7 +36,6 @@ export default function TelaForum() {
   return (
     <View style={styles.container}>
 
-      {/* HEADER */}
       <View style={styles.header}>
         <View style={styles.logo}>
           <Text style={styles.titulo}>+Saúde</Text>
@@ -46,7 +45,6 @@ export default function TelaForum() {
         <Ionicons name="search-outline" size={28} color="white" />
       </View>
 
-      {/* LISTA DE CONVERSAS */}
       <FlatList
         data={mensagens}
         keyExtractor={(item) => item.id}
@@ -65,7 +63,6 @@ export default function TelaForum() {
         )}
       />
 
-      {/* MENU INFERIOR */}
       <View style={styles.menu}>
         <TouchableOpacity onPress={irHome}>
             <Ionicons name="home-outline" size={28} color="white" />

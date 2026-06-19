@@ -12,7 +12,6 @@ export default function TelaForum() {
   return (
     <View style={styles.container}>
       
-      {/* HEADER */}
       <View style={styles.fundoA}>
         <View style={styles.Sauimg}>
           <Text style={styles.Titulo}>+Saúde</Text>
@@ -22,10 +21,8 @@ export default function TelaForum() {
         <Ionicons name="search-outline" size={28} color="white" style={styles.lupa} />
       </View>
 
-      {/* CONTEÚDO */}
       <View style={styles.conteudo}>
         
-        {/* CARD 1 */}
         <View style={styles.card}>
           <View style={styles.perfil}>
             <Ionicons name="person-circle-outline" size={50} color="#CFCFCF" />
@@ -39,7 +36,6 @@ export default function TelaForum() {
           </View>
         </View>
 
-        {/* CARD 2 */}
         <View style={styles.card}>
           <View style={styles.perfil}>
             <Ionicons name="person-circle-outline" size={50} color="#CFCFCF" />
@@ -54,7 +50,6 @@ export default function TelaForum() {
         </View>
       </View>
 
-      {/* MENU INFERIOR */}
       <View style={styles.menu}>
         <TouchableOpacity onPress={irHome}>
           <Ionicons name="home-outline" size={28} color="white" />
