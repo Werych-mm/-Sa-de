@@ -1,5 +1,12 @@
-import { View, Text, Image, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, Image, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router"
+
+const irHome = () => router.push("/Home");
+const irForum = () => router.push("/Forum");
+const irVideo = () => router.push("/Video");
+const irChat= () => router.push("/Chat");
+// const irPerfil = () => router.push("/Perfil");
 
 export default function Videos() {
   return (
@@ -7,68 +14,84 @@ export default function Videos() {
 
         <View style={styles.header}>
             <Text style={styles.logo}>+Saúde </Text>
-            <Image source={require("@/images/Folha.png")} />
 
-            <Ionicons
-            name= "search-outline"
-            size={28}
-            color="white"
-            />
-        </View>
+            <Image source={require("@/images/Folha.png")} style={styles.folha} />
+                <View style={styles.lupa}>
+                   <Ionicons name= "search-outline" size={28} color="white" />
+                </View>
+        </View> 
 
         <ScrollView>
             <View style={styles.card}>
                 <View style={styles.capa}>
                     <Text>(capa do video) </Text>
-            </View>
+                </View>
 
-            <Text style={styles.titulo}>
-                O que fazer quando você acaba pegando um vírus?       
-            </Text>
+                <Text style={styles.titulo}> O que fazer quando você acaba pegando um vírus?</Text>
 
-            <View style={styles.autorContainer}>
-            <Ionicons
-                name="person-circle-outline"
-                size={20}
-                color="gray"
-                />
-                <Text style={styles.autor}>Dr.Miguel</Text>
-            </View>
+                <View style={styles.autorContainer}>
+                    <Ionicons name="person-circle-outline" size={20} color="gray" />
+                    <Text style={styles.autor}>Dr.Miguel</Text>
+                </View>
             </View>    
 
             </ScrollView>
 
             <View style={styles.menu}>
-            <Ionicons name="home-outline" size={28} color="white" />
-            <Ionicons name="document-text-outline" size={28} color="white" />
-            <Ionicons name="play-circle-outline" size={35} color="black" />
-            <Ionicons name="chatbubble-outline" size={28} color="white" />
-            <Ionicons name="person-outline" size={28} color="white" />
-            </View>
+                <TouchableOpacity onPress={irHome}>
+                    <Ionicons name="home-outline" size={28} color="white" />
+                </TouchableOpacity>
+                                
+                <TouchableOpacity onPress={irForum}>
+                    <Ionicons name="document-text-outline" size={28} color="white" />
+                </TouchableOpacity>
+                                
+                <TouchableOpacity onPress={irVideo}>
+                    <Ionicons name="play-circle-outline" size={35} color="#2B4F68" />
+                </TouchableOpacity>
+                                
+                <TouchableOpacity onPress={irChat}>
+                    <Ionicons name="chatbubble-outline" size={28} color="white" />
+                </TouchableOpacity>
 
-       </View>     
+                <Ionicons name="person-outline" size={28} color="white" />
+            </View>
+    </View>     
     );
 }
 
 const styles = StyleSheet.create({
     container: {
         flex:1,
-        backgroundColor: "#fff",
+        backgroundColor: "#F5F5F5",
     },
 
     header: {
-        backgroundColor: "#8EBCCD",
-        padding: 20,
+        backgroundColor: "#A8CBD8",
+        paddingVertical: 20,
         paddingHorizontal: 15,
         flexDirection: "row",
-        justifyContent: "space-between",
         alignItems: "center",  
     },
 
+    lupa: {
+       position: "absolute",
+       top: 25,
+       right: 20,
+    },
+
     logo: {
-    fontSize: 28,
-    fontWeight: "bold",
-    color: "white",
+        flexDirection: "row",
+        alignItems: "center",
+        fontSize: 28,
+        fontWeight: "bold",
+        color: "white",
+    },
+
+    folha: {
+        width: 25,
+        height: 25,
+        marginLeft: 3,
     },
 
     card: {
@@ -84,7 +107,9 @@ const styles = StyleSheet.create({
     },
 
     titulo: {
-        fontSize: 20,
+        color: "#5A5A5A",
+        fontWeight: "600",
+        fontSize: 16,
         marginTop: 10,
     },
 
@@ -104,6 +129,6 @@ const styles = StyleSheet.create({
         justifyContent: "space-around",
         alignItems: "center",
         padding: 15,
-       backgroundColor: "#8EBCCD"
+       backgroundColor: "#A8CBD8",
     },
 });

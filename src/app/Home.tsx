@@ -1,86 +1,140 @@
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import {router} from 'expo-router'
 
-export default function TelaHome () {
-    return(
+const irHome = () => router.push("/Home");
+const irForum = () => router.push("/Forum");
+const irVideo = () => router.push("/Video");
+const irChat= () => router.push("/Chat");
+// const irPerfil = () => router.push("/Perfil");
 
+export default function TelaHome() {
+  return (
     <View style={styles.container}>
 
-        <View style={styles.header}>
-            <Text style={styles.nome}>+Saúde</Text>
-            <Image source={require("@/images/Folha.png")}/>
+      <View style={styles.header}>
+        <View style={styles.logo}>
+          <Text style={styles.nome}>+Saúde</Text>
+
+          <Image
+            source={require("@/images/Folha.png")}
+            style={styles.folha}
+          />
         </View>
 
         <Ionicons name="search-outline" size={28} color="white" />
+      </View>
 
-        <View style={styles.fundoB}>
-            <View style={styles.card1}>
-                <Ionicons name ="notifications-outline" size={28} color="black" />
-                <Text>Agendamento de conversa com o médico Rubens Junior feito com sucesso!</Text>
-            </View>
+      <View style={styles.fundoB}>
 
-            <View style={styles.card1}>
-                <Ionicons name ="notifications-outline" size={28} color="black" />
-                <Text>O resultado do seu exame saiu! Verifique seu chat.</Text>
-            </View>
-            
+        <View style={styles.card}>
+
+          <Ionicons name="notifications-outline" size={35} color="#6B6B6B" />
+
+          <Text style={styles.textoCard}>
+            Agendamento de conversa com o médico Rubens Junior feito com sucesso!
+          </Text>
         </View>
 
-        <View style={styles.menu}>
-            <Ionicons name="home-outline" size={28} color="#2B4F68" />
-            <Ionicons name="document-text-outline" size={28} color="white" />
-            <Ionicons name="play-circle-outline" size={35} color="white" />
-            <Ionicons name="chatbubble-outline" size={28} color="white" />
-            <Ionicons name="person-outline" size={28} color="white" />
+        <View style={styles.card}>
+
+          <Ionicons name="notifications-outline" size={35} color="#6B6B6B" />
+
+          <Text style={styles.textoCard}>
+            O resultado do seu exame saiu! Verifique seu chat.
+          </Text>
         </View>
+
+      </View>
+
+      <View style={styles.menu}>
+        <TouchableOpacity onPress={irHome}>
+          <Ionicons name="home-outline" size={28} color="#2B4F68" />
+        </TouchableOpacity>
+                
+        <TouchableOpacity onPress={irForum}>
+          <Ionicons name="document-text-outline" size={28} color="white" />
+        </TouchableOpacity>
+                
+        <TouchableOpacity onPress={irVideo}>
+          <Ionicons name="play-circle-outline" size={35} color="white" />
+        </TouchableOpacity>
+                
+        <TouchableOpacity onPress={irChat}>
+          <Ionicons name="chatbubble-outline" size={28} color="white" />
+        </TouchableOpacity>
+
+        <Ionicons name="person-outline" size={30} color="white" />
+      </View>
 
     </View>
-    )
+  );
 }
 
-const styles = StyleSheet.create ({
-    container: {
-        flex: 1,
-        backgroundColor: "#8EBCCD",
-        justifyContent: "center",
-        alignItems: "center",
-    },
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#FFFFFF",
+  },
 
-    header: {
-        flexDirection: "row",
-        alignItems: "center",
-        marginBottom: 20,
-    },
+  header: {
+    backgroundColor: "#A8CBD8",
+    height: 110,
+    paddingHorizontal: 20,
+    paddingTop: 35,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
 
-    nome: {
-        fontSize: 32,
-        color: "#fff",
-        fontWeight: "bold",
-    },
+  logo: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
 
-    fundoB: {
-        backgroundColor: "#F5F5F5",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: "10px",
-    },
+  nome: {
+    fontSize: 40,
+    color: "#FFF",
+    fontWeight: "bold",
+  },
 
-    card1: {
-        backgroundColor: "#E2E2E2",
-        color: "#4E4E4E",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "5%",
-        width: "90%",
-        borderRadius: "5px",
-        margin: 15
-    },
+  folha: {
+    width: 35,
+    height: 35,
+    resizeMode: "contain",
+    marginLeft: 3,
+  },
 
-    menu: {
-        flexDirection: "row",
-        justifyContent: "space-around",
-        padding: 15,
-        borderTopWidth: 1,
-        borderColor: "ddd",
-    },
+  fundoB: {
+    flex: 1,
+    backgroundColor: "#F5F5F5",
+    paddingTop: 20,
+    alignItems: "center",
+  },
+
+  card: {
+    width: "90%",
+    backgroundColor: "#E2E2E2",
+    borderRadius: 25,
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 18,
+    marginBottom: 15,
+  },
+
+  textoCard: {
+    flex: 1,
+    marginLeft: 12,
+    color: "#5A5A5A",
+    fontWeight: "600",
+    fontSize: 16,
+  },
+
+  menu: {
+    height: 65,
+    backgroundColor: "#A8CBD8",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+  },
 });
